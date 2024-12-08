@@ -1,59 +1,41 @@
-document.getElementById('mood-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // No page reroad
-    
-    const mood = document.getElementById('mood').value; // chosen emotion
-    const interactiveArea = document.getElementById('interactive-area');
-
-// color history
+// Array to store the colors entered by the user
 let colors = [];
 let moodHistory = [];
 
-// color add on
+// Function to change the color based on user input
 function changeColor() {
     const mood = document.getElementById('mood-input').value.toLowerCase();
     const interactiveArea = document.getElementById('interactive-area');
 
     let color = '';
-    if (mood === 'joy') {
-        interactiveArea.style.backgroundColor = '#ffeb3b'; // Bright Yellow
-    } else if (mood === 'happy') {
-        interactiveArea.style.backgroundColor = '#ff9800'; // Orange
-    } else if (mood === 'tired') {
-        interactiveArea.style.backgroundColor = '#9e9e9e'; // Grey
-    } else if (mood === 'stressed') {
-        interactiveArea.style.backgroundColor = '#e91e63'; // Red
+    // Assigning color based on mood
+    if (mood === 'happy') {
+        color = '#ffeb3b'; // Yellow
     } else if (mood === 'sad') {
-        interactiveArea.style.backgroundColor = '#2196f3'; // Blue
-    } else if (mood === 'irritating') {
-        interactiveArea.style.backgroundColor = '#f44336'; // Plumb
-    } else if (mood === 'hungry') {
-        interactiveArea.style.backgroundColor = '#ff5722'; // Dark Orange
-    } else if (mood === 'disgust') {
-        interactiveArea.style.backgroundColor = '#4caf50'; // Green
+        color = '#2196f3'; // Blue
     } else if (mood === 'angry') {
-        interactiveArea.style.backgroundColor = '#f44336'; // Anger Red
+        color = '#f44336'; // Red
     } else if (mood === 'calm') {
         color = '#4caf50'; // Green
     } else {
-        color = '#9e9e9e'; // Basic
+        color = '#9e9e9e'; // Default grey color
     }
 
-    // color & emontions layer
+    // Add color and mood to the arrays
     colors.push(color);
     moodHistory.push(mood);
 
-    // three emotions to appear shape
-    if (colors.length >= 3) {
-        interactiveArea.style.backgroundColor = colors[colors.length - 1];
-        revealShape();
-    } else {
-        interactiveArea.style.backgroundColor = color;
-    }
+    // Apply the color to the interactive area and gradually reveal the shape
+    interactiveArea.style.backgroundColor = color;
+    interactiveArea.style.opacity = 0.5 + (colors.length * 0.1); // Increase opacity as colors stack up
 
-    document.getElementById('mood-input').value = '';  // clear
+    // Once 3 colors are added, reveal the shape
+    if (colors.length >= 3) {
+        revealShape();
+    }
 }
 
-// shape
+// Function to reveal the shape
 function revealShape() {
     const interactiveArea = document.getElementById('interactive-area');
     const shape = document.createElement('div');
@@ -64,20 +46,11 @@ function revealShape() {
     shape.style.border = '5px solid black';
     shape.style.position = 'absolute';
 
-    // coloring
+    // Gradually fill the shape with the stacked colors
     for (let i = 0; i < colors.length; i++) {
         setTimeout(() => {
             shape.style.borderColor = colors[i];
             interactiveArea.appendChild(shape);
-        }, i * 1000); // colors by order
+        }, i * 1000); // Add color one by one with a delay
     }
-}
-
-// reset
-function resetCanvas() {
-    colors = [];
-    moodHistory = [];
-    document.getElementById('interactive-area').style.backgroundColor = '#fff';
-    const shapes = document.querySelectorAll('#interactive-area div');
-    shapes.forEach(shape => shape.remove()); // removing every color
 }
