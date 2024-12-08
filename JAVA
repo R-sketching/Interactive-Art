@@ -1,40 +1,40 @@
 document.getElementById('mood-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // 페이지 리로드 방지
+    e.preventDefault(); // No page reroad
     
-    const mood = document.getElementById('mood').value; // 선택된 감정
+    const mood = document.getElementById('mood').value; // chosen emotion
     const interactiveArea = document.getElementById('interactive-area');
 
-    // 감정에 따라 배경색과 형태 변화
+    // Emotions by colors
     if (mood === 'joy') {
-        interactiveArea.style.backgroundColor = '#ffeb3b'; // 밝은 노란색
-        interactiveArea.style.borderRadius = '50%'; // 동그란 형태
+        interactiveArea.style.backgroundColor = '#ffeb3b'; // Bright Yellow
+        interactiveArea.style.borderRadius = '50%'; // Round Shape
     } else if (mood === 'happiness') {
-        interactiveArea.style.backgroundColor = '#ff9800'; // 오렌지 색
+        interactiveArea.style.backgroundColor = '#ff9800'; // Orange
         interactiveArea.style.borderRadius = '50%';
     } else if (mood === 'tiredness') {
-        interactiveArea.style.backgroundColor = '#9e9e9e'; // 회색
+        interactiveArea.style.backgroundColor = '#9e9e9e'; // Grey
         interactiveArea.style.borderRadius = '20%';
     } else if (mood === 'stress') {
-        interactiveArea.style.backgroundColor = '#e91e63'; // 빨간색
+        interactiveArea.style.backgroundColor = '#e91e63'; // Red
         interactiveArea.style.borderRadius = '10%';
     } else if (mood === 'sadness') {
-        interactiveArea.style.backgroundColor = '#2196f3'; // 파란색
-        interactiveArea.style.borderRadius = '0%'; // 직사각형
+        interactiveArea.style.backgroundColor = '#2196f3'; // Blue
+        interactiveArea.style.borderRadius = '0%'; // Ractangluer Shape
     } else if (mood === 'irritation') {
-        interactiveArea.style.backgroundColor = '#f44336'; // 붉은 색
+        interactiveArea.style.backgroundColor = '#f44336'; // Plumb
         interactiveArea.style.borderRadius = '30%';
     } else if (mood === 'hunger') {
-        interactiveArea.style.backgroundColor = '#ff5722'; // 진한 오렌지색
+        interactiveArea.style.backgroundColor = '#ff5722'; // Dark Orange
         interactiveArea.style.borderRadius = '50%';
     } else if (mood === 'disgust') {
-        interactiveArea.style.backgroundColor = '#4caf50'; // 초록색
+        interactiveArea.style.backgroundColor = '#4caf50'; // Green
         interactiveArea.style.borderRadius = '40%';
     } else if (mood === 'anger') {
-        interactiveArea.style.backgroundColor = '#f44336'; // 빨간색
+        interactiveArea.style.backgroundColor = '#f44336'; // Anger Red
         interactiveArea.style.borderRadius = '50%';
     } else {
-        // 기타 감정에 대한 스타일 처리
-        interactiveArea.style.backgroundColor = '#9e9e9e'; // 기본 색상
+        // Other Emotions
+        interactiveArea.style.backgroundColor = '#9e9e9e'; // Basic
         interactiveArea.style.borderRadius = '15%';
     }
 });
