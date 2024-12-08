@@ -28,7 +28,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Interactive area */
 #interactive-area {
     width: 300px;
     height: 300px;
@@ -45,7 +44,6 @@ h1 {
     transition: opacity 0.5s ease;
 }
 
-/* Input field styling */
 input {
     font-size: 1.5rem;
     padding: 10px;
@@ -61,8 +59,6 @@ input {
     transition: background-color 0.3s ease;
 }
 
-/* Input field focus state */
 input:focus {
     background-color: rgba(255, 255, 255, 1);
 }
-
