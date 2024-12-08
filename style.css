@@ -1,4 +1,4 @@
-/* Basic style */
+/* Body Styling */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -6,44 +6,40 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
+    background: linear-gradient(45deg, #ff6347, #ffeb3b);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
     flex-direction: column;
-    background: linear-gradient(45deg, #ff6347, #ffeb3b); /* Initial gradient */
-    background-size: 400% 400%; /* Gradient size */
-    animation: gradientAnimation 15s ease infinite; /* Gradient animation */
+    overflow: hidden;
 }
 
-/* Gradient background animation */
+/* Gradient Animation */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
+/* Header Styling */
 h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #fff;
     text-align: center;
-    font-weight: 200; /* Thin font */
     margin-bottom: 20px;
+    font-weight: 200;
 }
 
+/* Interactive Area (Main Area) */
 #interactive-area {
-    width: 300px;
-    height: 300px;
+    width: 100vw;
+    height: 100vh;
     background-color: transparent;
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     position: relative;
-    border-radius: 50%;
-    border: 5px solid #ccc;
-    opacity: 0.1; /* Initially, only the shape outline is visible */
-    transition: opacity 0.5s ease;
+    overflow: hidden;
+    transition: background-color 1s ease-in-out;
 }
 
+/* Input Styling */
 input {
     font-size: 1.5rem;
     padding: 10px;
@@ -56,9 +52,27 @@ input {
     text-align: center;
     font-weight: 300;
     box-sizing: border-box;
-    transition: background-color 0.3s ease;
 }
 
-input:focus {
-    background-color: rgba(255, 255, 255, 1);
+/* Submit Button Styling */
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Create the wave effect */
+@keyframes waveAnimation {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+    100% { transform: translateX(0); }
 }
