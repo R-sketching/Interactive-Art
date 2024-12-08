@@ -2,27 +2,27 @@
 const moodColors = {
     calm: '#9F9F00',        // Calm - #9F9F00
     grounded: '#2B4A00',    // Grounded - #2B4A00
-    anger: '#ED1C24',       // Anger - #ED1C24
-    sadness: '#BE1E2D',     // Sadness - #BE1E2D
-    excitement: '#FF8500',  // Excitement - #FF8500
-    peace: '#00A79D',       // Peace - #00A79D
-    confidence: '#343A82',  // Confidence - #343A82
-    happiness: '#2DE23E',   // Happiness - #2DE23E
+    angry: '#ED1C24',       // Anger - #ED1C24
+    sad: '#BE1E2D',     // Sadness - #BE1E2D
+    excited: '#FF8500',  // Excitement - #FF8500
+    peaceful: '#00A79D',       // Peace - #00A79D
+    confident: '#343A82',  // Confidence - #343A82
+    happy: '#2DE23E',   // Happiness - #2DE23E
     love: '#FF4580',        // Love - #FF4580
-    affection: '#FFBBD8',   // Affection - #FFBBD8
+    affecion: '#FFBBD8',   // Affection - #FFBBD8
     serenity: '#86D5E0',    // Serenity - #86D5E0
     mystery: '#000F8E',     // Mystery - #000F8E
     nostalgia: '#873304',   // Nostalgia - #873304
     creativity: '#B4A0F9',  // Creativity - #B4A0F9
-    joy: '#F9ED32',         // Joy - #F9ED32
+    joyful: '#F9ED32',         // Joy - #F9ED32
     hope: '#FFD658',        // Hope - #FFD658
-    relaxation: '#FFFBB7',  // Relaxation - #FFFBB7
+    relax: '#FFFBB7',  // Relaxation - #FFFBB7
     indifference: '#6D6E71',// Indifference - #6D6E71
     neutral: '#939598',     // Neutral - #939598
     fear: '#231F20',        // Fear - #231F20
     purity: '#FFFFFF',      // Purity - #FFFFFF
-    motivation: '#A5D500',  // Motivation - #A5D500
-    guilt: '#FFA4A4'        // Guilt - #FFA4A4
+    motivated: '#A5D500',  // Motivation - #A5D500
+    guilty: '#FFA4A4'        // Guilt - #FFA4A4
 };
 
 // Store the colors and moods input by the user
