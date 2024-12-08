@@ -1,45 +1,47 @@
-// Colors and corresponding moods
+// Mapping moods to colors based on your provided list
 const moodColors = {
-    happy: '#FFEB3B',       // Bright Yellow
-    sad: '#2196F3',         // Blue
-    angry: '#F44336',       // Red
-    calm: '#4CAF50',        // Green
-    excited: '#FF9800',     // Orange
-    surprised: '#9C27B0',   // Purple
-    bored: '#9E9E9E',       // Gray
-    stressed: '#E91E63',    // Pink
-    confused: '#795548',    // Brown
-    motivated: '#8BC34A',   // Light Green
-    relaxed: '#607D8B',     // Blue-Green
-    lonely: '#3F51B5',      // Dark Blue
-    hopeful: '#00BCD4',     // Cyan
-    grateful: '#FFC107',    // Amber
-    fearful: '#FF5722',     // Deep Orange
-    proud: '#FF4081',       // Light Pink
-    guilty: '#FF5722',      // Orange-Red
-    nostalgic: '#FF9800',   // Golden Orange
-    embarrassed: '#F44336', // Bright Red
-    determined: '#4CAF50',  // Vibrant Green
-    curious: '#8BC34A',     // Lime Green
+    calm: '#9F9F00',        // Calm - #9F9F00
+    grounded: '#2B4A00',    // Grounded - #2B4A00
+    anger: '#ED1C24',       // Anger - #ED1C24
+    sadness: '#BE1E2D',     // Sadness - #BE1E2D
+    excitement: '#FF8500',  // Excitement - #FF8500
+    peace: '#00A79D',       // Peace - #00A79D
+    confidence: '#343A82',  // Confidence - #343A82
+    happiness: '#2DE23E',   // Happiness - #2DE23E
+    love: '#FF4580',        // Love - #FF4580
+    affection: '#FFBBD8',   // Affection - #FFBBD8
+    serenity: '#86D5E0',    // Serenity - #86D5E0
+    mystery: '#000F8E',     // Mystery - #000F8E
+    nostalgia: '#873304',   // Nostalgia - #873304
+    creativity: '#B4A0F9',  // Creativity - #B4A0F9
+    joy: '#F9ED32',         // Joy - #F9ED32
+    hope: '#FFD658',        // Hope - #FFD658
+    relaxation: '#FFFBB7',  // Relaxation - #FFFBB7
+    indifference: '#6D6E71',// Indifference - #6D6E71
+    neutral: '#939598',     // Neutral - #939598
+    fear: '#231F20',        // Fear - #231F20
+    purity: '#FFFFFF',      // Purity - #FFFFFF
+    motivation: '#A5D500',  // Motivation - #A5D500
+    guilt: '#FFA4A4'        // Guilt - #FFA4A4
 };
 
 // Store the colors and moods input by the user
 let colors = [];
 let moodHistory = [];
 
-// Function to change color based on the input mood
+// Function to change the color based on the input mood
 function changeColor() {
     const mood = document.getElementById('mood-input').value.toLowerCase();
     const interactiveArea = document.getElementById('interactive-area');
 
-    // If the mood exists in our moodColors object, use the corresponding color
+    // Check if the mood exists in our moodColors object, else default to grey
     let color = moodColors[mood] || '#9e9e9e'; // Default to grey if mood is not in the list
 
     // Add color and mood to the arrays
     colors.push(color);
     moodHistory.push(mood);
 
-    // Apply the color to the interactive area and gradually reveal the shape
+    // Apply the color to the background and gradually reveal the shape
     interactiveArea.style.backgroundColor = color;
     interactiveArea.style.opacity = 0.5 + (colors.length * 0.1); // Increase opacity as colors stack up
 
@@ -66,5 +68,19 @@ function revealShape() {
             shape.style.borderColor = colors[i];
             interactiveArea.appendChild(shape);
         }, i * 1000); // Add color one by one with a delay
+    }
+}
+
+// Function to submit the moods and trigger color stacking
+function submitMoods() {
+    const interactiveArea = document.getElementById('interactive-area');
+    
+    // Make sure we have 3 moods selected before triggering the change
+    if (colors.length >= 3) {
+        colors.forEach((color, index) => {
+            setTimeout(() => {
+                interactiveArea.style.backgroundColor = color; // Gradually show the colors
+            }, index * 1000);
+        });
     }
 }
