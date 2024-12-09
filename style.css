@@ -1,5 +1,6 @@
+/* Body Styling */
 body {
-    font-family: 'Poppins', sans-serif; /* Using Poppins for a modern and clean look */
+    font-family: 'Poppins', sans-serif; 
     margin: 0;
     display: flex;
     justify-content: center;
