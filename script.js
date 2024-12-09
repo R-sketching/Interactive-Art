@@ -1,86 +1,64 @@
-// Mapping moods to colors based on your provided list
 const moodColors = {
-    calm: '#9F9F00',        // Calm - #9F9F00
-    grounded: '#2B4A00',    // Grounded - #2B4A00
-    angry: '#ED1C24',       // Anger - #ED1C24
-    sad: '#BE1E2D',     // Sadness - #BE1E2D
-    excited: '#FF8500',  // Excitement - #FF8500
-    peaceful: '#00A79D',       // Peace - #00A79D
-    confident: '#343A82',  // Confidence - #343A82
-    happy: '#2DE23E',   // Happiness - #2DE23E
-    love: '#FF4580',        // Love - #FF4580
-    affecion: '#FFBBD8',   // Affection - #FFBBD8
-    serenity: '#86D5E0',    // Serenity - #86D5E0
-    mystery: '#000F8E',     // Mystery - #000F8E
-    nostalgia: '#873304',   // Nostalgia - #873304
-    creativity: '#B4A0F9',  // Creativity - #B4A0F9
-    joyful: '#F9ED32',         // Joy - #F9ED32
-    hope: '#FFD658',        // Hope - #FFD658
-    relax: '#FFFBB7',  // Relaxation - #FFFBB7
-    indifference: '#6D6E71',// Indifference - #6D6E71
-    neutral: '#939598',     // Neutral - #939598
-    fear: '#231F20',        // Fear - #231F20
-    purity: '#FFFFFF',      // Purity - #FFFFFF
-    motivated: '#A5D500',  // Motivation - #A5D500
-    guilty: '#FFA4A4'        // Guilt - #FFA4A4
+    calm: '#9F9F00',        // Calm
+    grounded: '#2B4A00',    // Grounded
+    anger: '#ED1C24',       // Anger
+    sadness: '#BE1E2D',     // Sadness
+    excited: '#FF8500',     // Excitement
+    peaceful: '#00A79D',    // Peaceful
+    confidence: '#343A82',  // Confidence
+    happiness: '#2DE23E',   // Happiness
+    love: '#FF4580',        // Love
+    affection: '#FFBBD8',   // Affection
+    serenity: '#86D5E0',    // Serenity
+    mystery: '#000F8E',     // Mystery
+    nostalgia: '#873304',   // Nostalgia
+    creativity: '#B4A0F9',  // Creativity
+    joy: '#F9ED32',         // Joy
+    hope: '#FFD658',        // Hope
+    relaxation: '#FFFBB7',  // Relaxation
+    indifference: '#6D6E71',// Indifference
+    neutral: '#939598',     // Neutral
+    fear: '#231F20',        // Fear
+    purity: '#FFFFFF',      // Purity
+    motivation: '#A5D500',  // Motivation
+    guilt: '#FFA4A4',        // Guilt
+    confusion: '#8E44AD',   // Confusion
+    embarrassment: '#FF6347', // Embarrassment
+    boredom: '#BDBDBD'      // Boredom
 };
 
-// Store the colors and moods input by the user
 let colors = [];
-let moodHistory = [];
 
-// Function to change the color based on the input mood
-function changeColor() {
-    const mood = document.getElementById('mood-input').value.toLowerCase();
+// Function to add color based on the selected mood
+function addColor(mood) {
+    const color = moodColors[mood] || '#9e9e9e'; // Default to grey if mood is not in the list
+    colors.push(color); // Add color to the colors array
+
+    // Create a line element for the color and animate it
     const interactiveArea = document.getElementById('interactive-area');
+    const line = document.createElement('div');
+    line.classList.add('line');
+    line.style.backgroundColor = color; // Set the line color based on the selected mood
 
-    // Check if the mood exists in our moodColors object, else default to grey
-    let color = moodColors[mood] || '#9e9e9e'; // Default to grey if mood is not in the list
+    // Add line to the interactive area
+    interactiveArea.appendChild(line);
 
-    // Add color and mood to the arrays
-    colors.push(color);
-    moodHistory.push(mood);
+    // Set random position for the line (position the line randomly)
+    const randomTop = Math.random() * 100;
+    const randomLeft = Math.random() * 100;
 
-    // Apply the color to the background and gradually reveal the shape
-    interactiveArea.style.backgroundColor = color;
-    interactiveArea.style.opacity = 0.5 + (colors.length * 0.1); // Increase opacity as colors stack up
+    line.style.top = `${randomTop}%`;   // Random top position
+    line.style.left = `${randomLeft}%`; // Random left position
 
-    // Once 3 colors are added, reveal the shape
-    if (colors.length >= 3) {
-        revealShape();
+    // Randomly choose horizontal or vertical direction for the line
+    const randomDirection = Math.random() > 0.5 ? 'horizontal' : 'vertical';
+    if (randomDirection === 'horizontal') {
+        line.style.animation = 'lineMovement 3s linear forwards'; // Horizontal movement
+    } else {
+        line.style.animation = 'verticalLineMovement 3s linear forwards'; // Vertical movement
     }
-}
 
-// Function to gradually reveal the shape
-function revealShape() {
-    const interactiveArea = document.getElementById('interactive-area');
-    const shape = document.createElement('div');
-    shape.style.width = '200px';
-    shape.style.height = '200px';
-    shape.style.backgroundColor = 'transparent';
-    shape.style.borderRadius = '50%';
-    shape.style.border = '5px solid black';
-    shape.style.position = 'absolute';
-
-    // Gradually fill the shape with the stacked colors
-    for (let i = 0; i < colors.length; i++) {
-        setTimeout(() => {
-            shape.style.borderColor = colors[i];
-            interactiveArea.appendChild(shape);
-        }, i * 1000); // Add color one by one with a delay
-    }
-}
-
-// Function to submit the moods and trigger color stacking
-function submitMoods() {
-    const interactiveArea = document.getElementById('interactive-area');
-    
-    // Make sure we have 3 moods selected before triggering the change
-    if (colors.length >= 3) {
-        colors.forEach((color, index) => {
-            setTimeout(() => {
-                interactiveArea.style.backgroundColor = color; // Gradually show the colors
-            }, index * 1000);
-        });
-    }
+    // Darken background slightly as lines are added
+    const background = document.querySelector('body');
+    background.style.backgroundColor = 'rgba(0, 0, 0, 0.1)'; // Slight darkening effect
 }
